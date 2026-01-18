@@ -17,18 +17,24 @@ public class LoanController {
     private LoanService loanService;
 
     @PostMapping
-    private ResponseEntity<Loan> create(@RequestBody @Valid LoanDTO data){
+    public ResponseEntity<Loan> create(@RequestBody @Valid LoanDTO data){
         Loan newLoan = loanService.createLoan(data);
         return ResponseEntity.ok(newLoan);
     }
 
     @GetMapping
-    private List<Loan> list (){
+    public List<Loan> list (){
         return loanService.listLoan();
     }
 
+    @GetMapping("/{id}")
+    public Loan listById(@PathVariable Long id){
+        return loanService.listLoanById(id);
+    }
+
+
     @DeleteMapping("/{id}")
-    private void delete(@PathVariable Long id){
+    public void delete(@PathVariable Long id){
         loanService.deleteLoan(id);
     }
 

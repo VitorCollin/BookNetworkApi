@@ -31,6 +31,10 @@ public class UserService {
         return userRepository.findAll();
     }
 
+    public User listUserById(Long id){
+        return userRepository.findById(id).orElseThrow(() -> new RuntimeException("User whit ID not found"));
+    }
+
     public void deleteUser(Long id){
 
         if(!userRepository.existsById(id)){

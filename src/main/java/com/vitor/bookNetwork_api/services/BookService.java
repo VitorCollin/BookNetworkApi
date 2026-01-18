@@ -31,6 +31,11 @@ public class BookService {
         return bookRepository.findAll();
     }
 
+    public Book listBookById(Long id){
+
+        return bookRepository.findById(id).orElseThrow(() -> new RuntimeException("Book with ID not found="));
+    }
+
     public void deleteBook(Long id){
         if(!bookRepository.existsById(id)){
             throw new RuntimeException(("Book Fot Found"));

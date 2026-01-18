@@ -55,6 +55,10 @@ public class LoanService {
 
     }
 
+    public Loan listLoanById(Long id){
+        return loanRepository.findById(id).orElseThrow(() -> new RuntimeException("Loan with ID not found"));
+    }
+
     public void deleteLoan(Long id){
         if(!loanRepository.existsById(id)){
             throw new RuntimeException("Loan not found");
