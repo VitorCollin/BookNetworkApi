@@ -35,6 +35,15 @@ public class UserService {
         return userRepository.findById(id).orElseThrow(() -> new RuntimeException("User whit ID not found"));
     }
 
+    public User updateUser (Long id, UserDTO data){
+
+        User user = userRepository.findById(id).orElseThrow(() -> new RuntimeException("User whit ID not found"));
+
+        modelMapper.map(data, user);
+
+        return userRepository.save(user);
+    }
+
     public void deleteUser(Long id){
 
         if(!userRepository.existsById(id)){

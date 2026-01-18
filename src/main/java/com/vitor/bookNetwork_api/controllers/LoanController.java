@@ -1,6 +1,7 @@
 package com.vitor.bookNetwork_api.controllers;
 
 import com.vitor.bookNetwork_api.DTOs.LoanDTO;
+import com.vitor.bookNetwork_api.DTOs.LoanUpdateDTO;
 import com.vitor.bookNetwork_api.models.Loan;
 import com.vitor.bookNetwork_api.services.LoanService;
 import jakarta.validation.Valid;
@@ -30,6 +31,12 @@ public class LoanController {
     @GetMapping("/{id}")
     public Loan listById(@PathVariable Long id){
         return loanService.listLoanById(id);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Loan> update(@PathVariable Long id, @RequestBody @Valid LoanUpdateDTO data){
+        Loan loan = loanService.updateLoan(id, data);
+        return ResponseEntity.ok(loan);
     }
 
 

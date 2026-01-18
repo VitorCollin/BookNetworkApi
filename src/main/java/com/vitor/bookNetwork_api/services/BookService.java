@@ -36,6 +36,15 @@ public class BookService {
         return bookRepository.findById(id).orElseThrow(() -> new RuntimeException("Book with ID not found="));
     }
 
+    public Book updateBook(Long id, BookDTO data){
+
+        Book book = bookRepository.findById(id).orElseThrow(() -> new RuntimeException("Book whit ID not found"));
+
+        modelMapper.map(data, book);
+
+        return bookRepository.save(book);
+    }
+
     public void deleteBook(Long id){
         if(!bookRepository.existsById(id)){
             throw new RuntimeException(("Book Fot Found"));
