@@ -16,9 +16,6 @@ This project was developed for **portfolio and learning purposes**, focusing on 
 * Input validation with Jakarta Validation
 * Swagger/OpenAPI documentation
 * In-memory database using H2
-
-> ⚠️ Note: Update operation is intentionally not implemented.
-
 ---
 
 ## 🛠 Technologies Used
